@@ -1,3 +1,9 @@
+### PATCHED
+
+So, Replit decided to make an update so you can't run a Replit 24/7 for free anymore. Soon I will update this GitHub with a tutorial on another host, stay tuned.
+
+
+
 ### What is this
 
 This is a bot that every 5 minutes it will check the current version of the Roblox Client, if the version changes then it will send a message to the specified webhook.
