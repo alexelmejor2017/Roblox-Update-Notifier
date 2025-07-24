@@ -1,4 +1,4 @@
-# Roblox-Update-Notifier
+# Roblox Update Notifier
 
 This is a program I made in Python a while ago which, after a set delay, it notifies the user through a Discord Webhook if Roblox has updated. It supports almost every version of Roblox, including Windows, Mac, Android and iOS.
 
