@@ -14,3 +14,9 @@ The logic is very simple. The program runs in a loop with a delay of 300 seconds
 4. Run the file bot.py
 
 **IMPORTANT:** Ensure that the names of the files remain unchanged, otherwise the program may not work properly
+
+# LICENSE
+
+This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License.  
+You may use, share, and modify this code non-commercially, as long as you give appropriate credit.  
+See [license details](https://creativecommons.org/licenses/by-nc/4.0/) for more information.
