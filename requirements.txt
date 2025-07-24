@@ -1,0 +1,6 @@
+requests
+discord 
+aiohttp
+asyncio
+bs4
+colorama
