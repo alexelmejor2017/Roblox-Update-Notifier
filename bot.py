@@ -12,16 +12,16 @@ colorama.init()
 
 cycle_count = 0
 
-async def check_web_version():
+async def check_windows_version():
     try:
         response = requests.get("https://clientsettingscdn.roblox.com/v2/client-version/WindowsPlayer", timeout=10)
         data = response.text
         json_data = json.loads(data)
         version = json_data["clientVersionUpload"]
-        print(f"Web version checked: {version}")
+        print(f"Windows version checked: {version}")
         return version
     except Exception as e:
-        print(f"Error checking web version: {e}")
+        print(f"Error checking windows version: {e}")
         return None
 
 async def check_mac_version():
@@ -53,10 +53,8 @@ async def check_android_version():
 
 async def check_ios_version():
     try:
-        url = 'https://apps.apple.com/us/app/roblox/id431946152'
-        response = requests.get(url, timeout=10)
+        response = requests.get("https://apps.apple.com/us/app/roblox/id431946152", timeout=10)
         soup = BeautifulSoup(response.text, 'html.parser')
-
         version_tag = soup.find('p', class_='l-column small-6 medium-12 whats-new__latest__version')
         if version_tag:
             version = version_tag.text.strip().replace('Version ', '')
@@ -89,13 +87,13 @@ async def main():
     while True:
         cycle_count += 1
 
-        web_version = await check_web_version()
+        windows_version = await check_windows_version()
         mac_version = await check_mac_version()
         android_version = await check_android_version()
         ios_version = await check_ios_version()
 
-        with open('web_version.txt', 'r') as file:
-            saved_web_version = file.read().strip() or "null"
+        with open('windows_version.txt', 'r') as file:
+            saved_windows_version = file.read().strip() or "null"
         
         with open('mac_version.txt', 'r') as file:
             saved_mac_version = file.read().strip() or "null"
@@ -107,10 +105,10 @@ async def main():
             saved_ios_version = file.read().strip() or "null"
 
         tasks = []
-        if web_version and web_version != saved_web_version:
-            tasks.append(process_updates("WEB", web_version, saved_web_version))
-            with open('web_version.txt', 'w') as file:
-                file.write(web_version)
+        if windows_version and windows_version != saved_windows_version:
+            tasks.append(process_updates("WINDOWS", windows_version, saved_windows_version))
+            with open('windows_version.txt', 'w') as file:
+                file.write(windows_version)
 
         if mac_version and mac_version != saved_mac_version:
             tasks.append(process_updates("MAC", mac_version, saved_mac_version))
@@ -140,3 +138,4 @@ if __name__ == "__main__":
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
         loop.run_until_complete(main())
+
